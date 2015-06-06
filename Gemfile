@@ -13,3 +13,4 @@ gem 'spring',        group: :development
 
 gem 'thin'
 gem 'devise'
+gem 'lastfm'
