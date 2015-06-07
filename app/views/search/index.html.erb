@@ -1,45 +1,52 @@
-<%= form_tag("/", method: "get") do %>
-  <%= label_tag(:q, "Search for Artist:") %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Artist" %>
-  <%= submit_tag("Search") %>
-<% end %>
+<p>&nbsp;
 
-<% if @top_tracks %>
-  <h2>Top Recommended Tracks by Artist</h2>
-  <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-          <th>Title</th>
-          <th>Duration</th>
-          <th>Artist</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% for @track in @top_tracks %>
-        <tr>
-          <td><%= @track['name'] %></td>
-          <td><%= @track['duration'] %></td>
-          <td><%= @track['artist']['name'] %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<% if @artists %>
-  <h2>Similar artists</h2>
-  <% @artists.each_slice(3) do |slice| %>
-    <div class="row">
-      <% slice.each do |artist| %>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-              <img src=<%= artist['image'][3]['content'] %>>
-              <div class="caption">
-                <h3><%= artist['name'] %></h3>
-              </div>
-            </div>
-        </div>
-      <% end %>
+<div class="container">
+  <%= form_tag("/", method: "get", class: "col-md-4 form-inline") do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder: "Search Artist", class: "form-control" %>
+      <%= submit_tag "Search", class: "btn btn-default" %>
     </div>
   <% end %>
-<% end %>
+</div>
+
+<div class="container">
+  <% if @top_tracks %>
+    <h2>Top Recommended Tracks by Artist</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+          <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Artist</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% for @track in @top_tracks %>
+          <tr>
+            <td><%= @track['name'] %></td>
+            <td><%= @track['duration'] %></td>
+            <td><%= @track['artist']['name'] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% if @artists %>
+    <h2>Similar artists</h2>
+    <% @artists.each_slice(3) do |slice| %>
+      <div class="row">
+        <% slice.each do |artist| %>
+          <div class="col-sm-6 col-md-4">
+              <div class="thumbnail">
+                <img src=<%= artist['image'][3]['content'] %>>
+                <div class="caption">
+                  <h3><%= artist['name'] %></h3>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
