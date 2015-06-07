@@ -15,3 +15,5 @@ gem 'thin'
 gem 'devise'
 gem 'lastfm'
 gem 'pry'
+
+gem 'bootstrap-sass'

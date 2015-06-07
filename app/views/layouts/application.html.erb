@@ -10,7 +10,16 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <h3>LastFm app</h3>
+      </div>
+      <div class="col-xs-9">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
