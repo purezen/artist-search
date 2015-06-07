@@ -6,11 +6,24 @@
 
 <% if @top_tracks %>
   <h2>Top Recommended Tracks by Artist</h2>
-  <% for @track in @top_tracks %>
-    <p>Title: <%= @track['name'] %></p>
-    <p>Duration: <%= @track['duration'] %></p>
-    <p>Artist: <%= @track['artist']['name'] %></p>
-  <% end %>
+  <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+          <th>Title</th>
+          <th>Duration</th>
+          <th>Artist</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% for @track in @top_tracks %>
+        <tr>
+          <td><%= @track['name'] %></td>
+          <td><%= @track['duration'] %></td>
+          <td><%= @track['artist']['name'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <% if @artists %>
