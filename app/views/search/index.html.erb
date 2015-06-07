@@ -28,7 +28,18 @@
 
 <% if @artists %>
   <h2>Similar artists</h2>
-  <% for @artist in @artists %>
-    <p><%= @artist['name'] %></p>
+  <% @artists.each_slice(3) do |slice| %>
+    <div class="row">
+      <% slice.each do |artist| %>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <img src=<%= artist['image'][3]['content'] %>>
+              <div class="caption">
+                <h3><%= artist['name'] %></h3>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
