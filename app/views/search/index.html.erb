@@ -1,13 +1,21 @@
-<h1>Search#index</h1>
-
 <%= form_tag("/", method: "get") do %>
   <%= label_tag(:q, "Search for Artist:") %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Artist" %>
   <%= submit_tag("Search") %>
 <% end %>
 
+<% if @top_tracks %>
+  <h2>Top Recommended Tracks by Artist</h2>
+  <% for @track in @top_tracks %>
+    <p>Title: <%= @track['name'] %></p>
+    <p>Duration: <%= @track['duration'] %></p>
+    <p>Artist: <%= @track['artist']['name'] %></p>
+  <% end %>
+<% end %>
+
 <% if @artists %>
+  <h2>Similar artists</h2>
   <% for @artist in @artists %>
-    <h3><%= @artist['name'] %><h3>
+    <p><%= @artist['name'] %></p>
   <% end %>
 <% end %>
