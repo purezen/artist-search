@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'history/index'
+
   get 'search/index'
 
   devise_for :users

@@ -5,6 +5,7 @@ class SearchController < ApplicationController
     if params[:search]
       @top_tracks = @lastfm.artist.get_top_tracks(artist: params[:search])
       @artists = @lastfm.artist.search(artist: params[:search])['results']['artistmatches']['artist']
+      current_user.searches.create(history: params[:search])
     end
   end
 
